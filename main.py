@@ -37,14 +37,16 @@ async def on_message(message):
         msgformatada = (mensagemDoUsuario[6:])
         url = 'https://query1.finance.yahoo.com/v8/finance/chart/' + msgformatada + '.SA?region=US&lang=en-US&includePrePost=false&interval=2m&useYfid=true&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance'
         data = (requests.get(url))
-        precoAgora = (
-            data.json()['chart']['result'][0]['meta']['regularMarketPrice'])
-        precoAntesDeFechar = (
-            data.json()['chart']['result'][0]['meta']['previousClose'])
-        variacao = (precoAgora / precoAntesDeFechar) - 1
-        variacao = "{:.2%}".format(variacao)
-        mensagem = ('Preço: R$' + str(precoAgora) + ' - Variação: ' +
-                    str(variacao) + ':chart_with_upwards_trend: ')
+        precoAgora = float((
+            data.json()['chart']['result'][0]['meta']['regularMarketPrice']))
+        precoAntesDeFechar = float((
+            data.json()['chart']['result'][0]['meta']['previousClose']))
+        variacao = float((precoAgora / precoAntesDeFechar) - 1)
+        if (variacao < 0):
+            mensagem = ('Preço: R$' + str(precoAgora) + ' - Variação: ' + "{:.2%}".format(variacao)  + ':chart_with_downwards_trend:')
+        else:
+          mensagem = ('Preço: R$' + str(precoAgora) + ' - Variação: '   + "{:.2%}".format(variacao)  +  ':chart_with_upwards_trend:')
+            
 
         channel = message.channel
         await channel.send(mensagem)
