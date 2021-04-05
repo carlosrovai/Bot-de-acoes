@@ -9,11 +9,10 @@ def retornaPrecoAcao():
     print('teste')
     if message.author == client.user:
         return
-    if message.content.startswith('cogna'):
+    if message.content.startswith('coaasasgna'):
       print('entrou na cogna')
       channel = message.channel
       mensagem = ("COGNA É 15")
-      await channel.send(mensagem)
     if message.content.startswith('$google'):
       mensagemDoUsuario = message.content
       urlformatada = (mensagemDoUsuario[8:])
