@@ -1,5 +1,8 @@
 import discord
 import os
+import schedule
+import time
+import tasks
 import json
 import requests
 import random
@@ -10,11 +13,10 @@ urlaltabaixa = 'https://www.infomoney.com.br/wp-json/infomoney/v1/highlow'
 
 @client.event
 async def on_ready():
-    print('i am alive {0.user}'.format(client))
-
+    print('Estou vivo ! {0.user}'.format(client))
 
 @client.event
-async def on_message(message):
+async def on_message(message):  
     if message.author == client.user:
         return
     if ('cogna' in message.content):
@@ -72,9 +74,8 @@ async def on_message(message):
           preco = str(data.json()['low'][i]['VALOR'])
           oscilacao = float(data.json()['low'][i]['OSCILACAO'])/100
           mensagem = mensagem + str(('Ação: '  +acao+ '     Preço atual: R$ '+str(preco)) + ' Variação: ' + "{:.2%}".format(oscilacao) + ':chart_with_downwards_trend:' '\n')
-          i = i + 1    
+          i = i + 1
     await channel.send(mensagem)
-
 
 keep_alive()
 client.run(os.getenv('keybot'))

@@ -57,6 +57,14 @@ version = "7.1.2"
 
 [[package]]
 category = "main"
+description = "Like functools.singledispatch but for values"
+name = "datadispatch"
+optional = false
+python-versions = "*"
+version = "1.0.0"
+
+[[package]]
+category = "main"
 description = "A mirror package for discord.py. Please install that instead."
 name = "discord"
 optional = false
@@ -148,6 +156,25 @@ version = "5.1.0"
 
 [[package]]
 category = "main"
+description = "Job scheduling for humans."
+name = "schedule"
+optional = false
+python-versions = ">=3.6"
+version = "1.1.0"
+
+[[package]]
+category = "main"
+description = "A simple personal task queue to track todo items"
+name = "tasks"
+optional = false
+python-versions = "*"
+version = "2.7.0"
+
+[package.dependencies]
+datadispatch = "*"
+
+[[package]]
+category = "main"
 description = "Backported and Experimental Type Hints for Python 3.5+"
 name = "typing-extensions"
 optional = false
@@ -179,7 +206,7 @@ idna = ">=2.0"
 multidict = ">=4.0"
 
 [metadata]
-content-hash = "67179e68f36674eb3800ba17a69b0effefe435e61bc749fad79640b809325a2e"
+content-hash = "26b92dd7ec4b8eee80e07a75be7b9d30acf69b7bc8548d3831eea692d363e23e"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -237,6 +264,10 @@ chardet = [
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
     {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
+]
+datadispatch = [
+    {file = "datadispatch-1.0.0-py3-none-any.whl", hash = "sha256:527ad534881d7f6144a8ff643c260a3d2ae0d50e8ee24ec4b0fdae72d6c7beab"},
+    {file = "datadispatch-1.0.0.tar.gz", hash = "sha256:3c0456934e99f21137332deebbda05713dc07fcb142dfc01ef83d6b17aeaf08e"},
 ]
 discord = [
     {file = "discord-1.0.1-py3-none-any.whl", hash = "sha256:9d4debb4a37845543bd4b92cb195bc53a302797333e768e70344222857ff1559"},
@@ -354,6 +385,14 @@ multidict = [
     {file = "multidict-5.1.0-cp39-cp39-win32.whl", hash = "sha256:fc13a9524bc18b6fb6e0dbec3533ba0496bbed167c56d0aabefd965584557d80"},
     {file = "multidict-5.1.0-cp39-cp39-win_amd64.whl", hash = "sha256:7df80d07818b385f3129180369079bd6934cf70469f99daaebfac89dca288359"},
     {file = "multidict-5.1.0.tar.gz", hash = "sha256:25b4e5f22d3a37ddf3effc0710ba692cfc792c2b9edfb9c05aefe823256e84d5"},
+]
+schedule = [
+    {file = "schedule-1.1.0-py2.py3-none-any.whl", hash = "sha256:617adce8b4bf38c360b781297d59918fbebfb2878f1671d189f4f4af5d0567a4"},
+    {file = "schedule-1.1.0.tar.gz", hash = "sha256:e6ca13585e62c810e13a08682e0a6a8ad245372e376ba2b8679294f377dfc8e4"},
+]
+tasks = [
+    {file = "tasks-2.7.0-py3-none-any.whl", hash = "sha256:94719dccc369129c4e626486cc0e681ae3d3b4d631d9a60cb66c7fd7f351e711"},
+    {file = "tasks-2.7.0.tar.gz", hash = "sha256:f5a387c728dbee5017b35802754598fc872a5b0f2bf01422dce216182ad73d4f"},
 ]
 typing-extensions = [
     {file = "typing_extensions-3.7.4.3-py2-none-any.whl", hash = "sha256:dafc7639cde7f1b6e1acc0f457842a83e722ccca8eef5270af2d74792619a89f"},
