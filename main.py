@@ -18,20 +18,21 @@ async def on_ready():
     print('Estou vivo ! {0.user}'.format(client))
 
 @client.event
-async def on_message(message):  
-    if message.author == client.user:
+async def on_message(message):
+    try:  
+      if message.author == client.user:
         return
 
-    if 'cogna' in message.content.lower():
+      if 'cogna' in message.content.lower():
         await message.channel.send('COGNA É 15')
     
-    if message.content.startswith('$google'):
+      if message.content.startswith('$google'):
         mensagem_do_usuario = message.content
         url_formatada = mensagem_do_usuario[8:]
         url_replacada = url_formatada.replace(' ', '+')
         url_google = 'https://www.google.com/search?q=' + url_replacada
         await message.channel.send(url_google)
-    elif message.content.startswith('$acao'):
+      elif message.content.startswith('$acao'):
         mensagem_do_usuario = message.content
         msgformatada = mensagem_do_usuario[6:]
         url = 'https://query1.finance.yahoo.com/v8/finance/chart/' + msgformatada + '.SA?region=US&lang=en-US&includePrePost=false&interval=2m&useYfid=true&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance'
@@ -46,7 +47,7 @@ async def on_message(message):
         else:
             mensagem = f'Preço: R${preco_atual:.2f} - Variação: {variacao:.2%} Não houve variação de preço nessa ação até o momento.'
         await message.channel.send(mensagem)
-    elif message.content.startswith('$acoesalta'):
+      elif message.content.startswith('$acoesalta'):
         data = requests.get(URL_ALTA_BAIXA).json()
         mensagem = ''
         for i in range(5):
@@ -55,7 +56,7 @@ async def on_message(message):
           oscilacao = float(data['high'][i]['OSCILACAO'])
           mensagem += f'Ação: {acao}     Preço atual: R$ {preco:.2f} Variação: {oscilacao:.2f}%:chart_with_upwards_trend:\n'
         await message.channel.send(mensagem)
-    elif message.content.startswith('$acoesbaixa'):
+      elif message.content.startswith('$acoesbaixa'):
         data = requests.get(URL_ALTA_BAIXA).json()
         mensagem = ''
         for i in range(5):
@@ -64,6 +65,8 @@ async def on_message(message):
           oscilacao = float(data['low'][i]['OSCILACAO'])
           mensagem += f'Ação: {acao}     Preço atual: R$ {preco:.2f} Variação: {oscilacao:.2f}%:chart_with_downwards_trend:\n'
         await message.channel.send(mensagem)
-
+    except:
+      mensagem = 'escreve certo burro'
+      await message.channel.send(mensagem)
 keep_alive()
 client.run(os.getenv('keybot'))
