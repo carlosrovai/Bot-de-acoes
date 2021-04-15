@@ -1,7 +1,3 @@
-import os
-import json
-import random
-import discord
 import requests
 
 URL_ALTA_BAIXA = 'https://www.infomoney.com.br/wp-json/infomoney/v1/highlow'

@@ -1,8 +1,6 @@
 import os
-import json
-import random
+
 import discord
-import requests
 
 from acao import funcao
 from keep_alive import keep_alive
